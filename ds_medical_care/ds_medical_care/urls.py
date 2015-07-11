@@ -18,4 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+
+    #index
+    url(r'^$', 'ds_medical_care_web.views.index', name="index"),
 ]

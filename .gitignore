@@ -68,3 +68,13 @@ target/
 
 # Sublime workspace file
 *.sublime*
+
+# Webpack stuff
+*.orig
+node_modules/
+dist/
+bower_components/
+bundles/
+
+# Mac-specific
+.DS_Store
