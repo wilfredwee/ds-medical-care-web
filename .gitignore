@@ -78,3 +78,6 @@ bundles/
 
 # Mac-specific
 .DS_Store
+
+# PyCharm folder
+.idea/
