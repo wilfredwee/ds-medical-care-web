@@ -71,6 +71,7 @@ target/
 
 # Webpack stuff
 *.orig
+ds_medical_care/webpack-stats.json
 node_modules/
 dist/
 bower_components/
