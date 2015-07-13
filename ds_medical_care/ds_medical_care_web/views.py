@@ -15,6 +15,7 @@ def index(request):
 class ParentUserViewSet(viewsets.ModelViewSet):
     serializer_class = ParentUserSerializer
     queryset = ParentUser.objects.all()
+    permission_classes = (permissions.IsAuthenticated,)
 
     def pre_save(self, obj):
         obj.user = self.request.user
