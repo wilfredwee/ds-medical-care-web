@@ -1,5 +1,11 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import patterns, url, include
+from ds_medical_care_web import views
+from rest_framework.routers import DefaultRouter
 
-urlpatterns = patterns('polls.views',
-    (r'^$', 'index'),
-)
+router = DefaultRouter()
+router.register(r'parentusers', views.ParentUserViewSet, base_name='parentuser')
+
+urlpatterns = [
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+]
