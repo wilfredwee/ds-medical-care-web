@@ -32,7 +32,9 @@
     "file-loader": "~0.8.4",
     "url-loader": "~0.5.6",
     "expose-loader": "~0.7.0",
-    "js-cookie": "~2.0.2"
+    "js-cookie": "~2.0.2",
+    "lodash": "~3.10.0",
+    "react-router": "~0.13.3"
   },
   "dependencies": {}
 }

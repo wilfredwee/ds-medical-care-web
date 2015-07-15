@@ -1,27 +1,26 @@
 var React = require('react');
 var $ = require('jquery');
 var LoginComponent = require('./LoginComponent');
+var ReactRouter = require('react-router');
 
-var App = React.createClass({
+var Link = ReactRouter.Link;
+
+var BaseTemplate = React.createClass({
    render: function() {
        return (
-        <div>
         <nav className="navbar navbar-default">
           <div className="container-fluid">
             <div className="navbar-header">
-              <a className="navbar-brand" href="#">DS Medical Care</a>
+              <Link className="navbar-brand" to="/">DS Medical Care</Link>
             </div>
+            <ul className="nav navbar-nav navbar-right">
+              <li><Link to="login">Login</Link></li>
+            </ul>
           </div>
         </nav>
-        <div className="container">
-          <div className="row">
-            <LoginComponent />
-          </div>
-        </div>
-        </div>
       );
    }
 });
 
-module.exports = App;
+module.exports = BaseTemplate;
 
