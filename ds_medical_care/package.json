@@ -31,7 +31,8 @@
     "bootstrap-webpack": "0.0.3",
     "file-loader": "~0.8.4",
     "url-loader": "~0.5.6",
-    "expose-loader": "~0.7.0"
+    "expose-loader": "~0.7.0",
+    "js-cookie": "~2.0.2"
   },
   "dependencies": {}
 }

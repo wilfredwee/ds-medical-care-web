@@ -1,9 +1,11 @@
 var React = require('react');
 var $ = require('jquery');
+var LoginComponent = require('./LoginComponent');
 
-module.exports = React.createClass({
-   render: function(){
+var App = React.createClass({
+   render: function() {
        return (
+        <div>
         <nav className="navbar navbar-default">
           <div className="container-fluid">
             <div className="navbar-header">
@@ -11,6 +13,15 @@ module.exports = React.createClass({
             </div>
           </div>
         </nav>
+        <div className="container">
+          <div className="row">
+            <LoginComponent />
+          </div>
+        </div>
+        </div>
       );
    }
 });
+
+module.exports = App;
+
