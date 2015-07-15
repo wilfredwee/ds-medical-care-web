@@ -3,7 +3,7 @@ from ds_medical_care_web import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'parentusers', views.ParentUserViewSet, base_name='parentuser')
+router.register(r'users', views.UserViewSet, base_name='user')
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),

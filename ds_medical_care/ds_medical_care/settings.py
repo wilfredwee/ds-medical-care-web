@@ -69,6 +69,10 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'ds_medical_care_web.serializers.UserSerializer'
+}
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
