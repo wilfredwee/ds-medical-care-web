@@ -1,9 +1,10 @@
 from django.conf.urls import patterns, url, include
-from ds_medical_care_web import views
+from ds_medical_care_web.views import UserViewSet, ChildViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'users', views.UserViewSet, base_name='user')
+router.register(r'users', UserViewSet, base_name='user')
+router.register(r'children', ChildViewSet, base_name='child')
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),
