@@ -3,9 +3,10 @@ from rest_auth.serializers import UserDetailsSerializer
 
 class UserSerializer(UserDetailsSerializer):
     parent_type = serializers.CharField(source="parentprofile.parent_type")
+    parent_id = serializers.ReadOnlyField(source="parentprofile.id")
 
     class Meta(UserDetailsSerializer.Meta):
-        fields = UserDetailsSerializer.Meta.fields + ('parent_type',)
+        fields = UserDetailsSerializer.Meta.fields + ('parent_type', 'parent_id')
 
     def update(self, instance, validated_data):
         profile_data = validated_data.pop('parentprofile', {})
