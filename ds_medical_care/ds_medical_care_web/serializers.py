@@ -14,7 +14,15 @@ class ParentProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ParentProfile
-        fields = ('id', 'children')
+        fields = (
+            'id',
+            'children',
+            'phone_number',
+            'address',
+            'city',
+            'province',
+            'postal_code',
+            'participant_code')
 
 class UserSerializer(UserDetailsSerializer):
     parent_type = serializers.CharField(source="parentprofile.parent_type", required=False)
@@ -26,12 +34,32 @@ class UserSerializer(UserDetailsSerializer):
     def update(self, instance, validated_data):
         profile_data = validated_data.pop('parentprofile', {})
         parent_type = profile_data.get('parent_type')
+        phone_number = profile_data.get('phone_number')
+        address = profile_data.get('address')
+        city = profile_data.get('city')
+        province = profile_data.get('province')
+        postal_code = profile_data.get('postal_code')
+        participant_code = profile_data.get('participant_code')
 
         instance = super(UserSerializer, self).update(instance, validated_data)
 
         # get and update user profile
         profile = instance.parentprofile
-        if profile_data and parent_type:
-            profile.parent_type = parent_type
+        if profile_data:
+            if parent_type:
+                profile.parent_type = parent_type
+            if phone_number:
+                profile.phone_number = phone_number
+            if address:
+                profile.address = address
+            if city:
+                profile.city = city
+            if province:
+                profile.province = province
+            if postal_code:
+                profile.postal_code = postal_code
+            if participant_code:
+                profile.participant_code = participant_code
+
             profile.save()
         return instance

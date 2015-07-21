@@ -2,12 +2,17 @@ from django.shortcuts import render
 
 from rest_framework import permissions
 from rest_framework import viewsets
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework.renderers import HTMLFormRenderer, JSONRenderer, BrowsableAPIRenderer
 from rest_framework.parsers import JSONParser
 
 from django.contrib.auth.models import User
 from ds_medical_care_web.serializers import UserSerializer, ChildSerializer
 from ds_medical_care_web.models import Child
+
+from ds_medical_care_web.redcap_handlers.RedCapSessionHandler import import_redcap_records_for_parent
+
 
 def index(request):
   return render(request, 'ds_medical_care_web/index.html', {})
@@ -22,3 +27,13 @@ class ChildViewSet(viewsets.ModelViewSet):
     queryset = Child.objects.all()
     # TODO: Restrict it to child's parents only
     permission_classes = (permissions.IsAuthenticated,)
+
+class ImportRedCapRecordsView(APIView):
+
+    def post(self, request, format=None):
+        # TODO: figure this out
+        parentId = int(request.data['parentId'])
+
+        return Response(import_redcap_records_for_parent(parentId))
+
+

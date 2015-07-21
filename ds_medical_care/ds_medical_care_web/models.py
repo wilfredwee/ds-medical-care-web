@@ -3,6 +3,7 @@ from django.db.models.signals import post_save
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Child(models.Model):
     parent = models.ForeignKey('ParentProfile', related_name='children')
     first_name = models.CharField(max_length=200)
@@ -12,12 +13,18 @@ class Child(models.Model):
         return self.first_name + " " + self.last_name
 
 
-
 # TODO: Add relationship to Child
 class ParentProfile(models.Model):
     user = models.OneToOneField(User)
     # NOTE: This is temporary, it's just to show what's possible.
-    parent_type = models.CharField(max_length=200)
+    parent_type = models.CharField(max_length=200, blank=True)
+    phone_number = models.CharField(max_length=12, blank=True)
+    address = models.CharField(max_length=200, blank=True)
+    city = models.CharField(max_length=200, blank=True)
+    province = models.CharField(max_length=200, blank=True)
+    postal_code = models.CharField(max_length=6, blank=True)
+    participant_code = models.CharField(max_length=6, blank=True)
+
 
 def create_parent_profile(sender, instance, created, **kwargs):
     if created:
