@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import HTMLFormRenderer, JSONRenderer, BrowsableAPIRenderer
 from rest_framework.parsers import JSONParser
+from rest_framework.exceptions import ParseError
 
 from django.contrib.auth.models import User
 from ds_medical_care_web.serializers import UserSerializer, ChildSerializer
@@ -31,9 +32,11 @@ class ChildViewSet(viewsets.ModelViewSet):
 class ImportRedCapRecordsView(APIView):
 
     def post(self, request, format=None):
-        # TODO: figure this out
-        parentId = int(request.data['parentId'])
+        parentIdString = request.data.get('parentId')
 
-        return Response(import_redcap_records_for_parent(parentId))
+        if parentIdString:
+            return Response(import_redcap_records_for_parent(int(parentIdString)))
+        else:
+            raise ParseError(detail='Request must have a parentId key')
 
 
