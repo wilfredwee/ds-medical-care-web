@@ -8,13 +8,13 @@ The web part of DS-Medical-Care
  1. `cd ds-medical-care-web` (note dashes)
  1. `pip install virtualenv`
  1. `virtualenv env`
- 1. `pip install -r requirements.txt`
 4. Install npm packages (same directory as `packages.json`):
  1. `cd ds_medical_care`
  1. `npm install`
 5. Activate virtualenv
  1. `cd ..`
  1. `env/Scripts/activate`
+ 1. `pip install -r requirements.txt`
 6. Start Django server
  1. `cd ds_medical_care`
  1. `python manage.py runserver`
