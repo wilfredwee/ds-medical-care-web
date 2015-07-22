@@ -16,8 +16,8 @@ class Child(models.Model):
     parent = models.ForeignKey('ParentProfile', related_name='children')
     first_name = models.CharField(max_length=200, blank=True)
     last_name = models.CharField(max_length=200, blank=True)
-    age = models.IntegerField(blank=True)
-    date_of_birth = models.DateField(blank=True)
+    age = models.IntegerField(null=True)
+    date_of_birth = models.DateField(null=True)
 
     def __unicode__(self):
         return self.first_name + " " + self.last_name
