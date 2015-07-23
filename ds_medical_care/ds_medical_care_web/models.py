@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class SleepEntry(models.Model):
-    child = models.ForeignKey('Child')
+    child = models.ForeignKey('Child', related_name='sleep')
     timeEvent = models.DateTimeField()
     timeEntered = models.DateTimeField()
     notes = models.TextField(blank=True)
@@ -16,8 +16,8 @@ class Child(models.Model):
     parent = models.ForeignKey('ParentProfile', related_name='children')
     first_name = models.CharField(max_length=200, blank=True)
     last_name = models.CharField(max_length=200, blank=True)
-    age = models.IntegerField(null=True)
-    date_of_birth = models.DateField(null=True)
+    age = models.IntegerField(null=True, blank=True)
+    date_of_birth = models.DateField(null=True, blank=True)
 
     def __unicode__(self):
         return self.first_name + " " + self.last_name
