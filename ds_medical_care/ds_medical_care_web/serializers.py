@@ -7,7 +7,7 @@ class ChildSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Child
-        fields = ('id', 'first_name', 'last_name', 'parent')
+        fields = ('id', 'first_name', 'last_name', 'parent', 'date_of_birth')
 
 class ParentProfileSerializer(serializers.ModelSerializer):
     children = ChildSerializer(many=True, required=False)

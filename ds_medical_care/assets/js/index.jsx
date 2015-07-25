@@ -1,22 +1,45 @@
-var React = require('react');
-var BaseTemplate = require('./BaseTemplate');
 require('expose?$!expose?jQuery!jquery');
 require("bootstrap-webpack");
 
+var React = require('react');
+var _ = require('lodash');
+
 var ReactRouter = require('react-router');
-var Router = ReactRouter;
 var Route = ReactRouter.Route;
 var RouteHandler = ReactRouter.RouteHandler;
 
+var AjaxHelpers = require("./AjaxHelpers");
+var ReactiveStore = require("./ReactiveStore");
+
+var BaseTemplate = require('./BaseTemplate');
 var LoginPage = require('./pages/LoginPage');
+var ParentInfoPage = require('./pages/ParentInfoPage');
 
 // Define our top level RouteHandler
 var Index = React.createClass({
+  getInitialState: function() {
+    AjaxHelpers.getParent();
+
+    var self = this;
+    window.setInterval(function() {
+      var newParent = ReactiveStore.getParent();
+      if(_.isEqual(self.state.parent, newParent)) {
+        return;
+      }
+
+      self.setState({
+        parent: newParent
+      });
+    }, 500);
+
+    return {};
+  },
+
   render: function() {
     return (
       <div>
-        <BaseTemplate />
-        <RouteHandler />
+        <BaseTemplate parent={this.state.parent}/>
+        <RouteHandler parentData={this.state.parent} />
       </div>
     );
   }
@@ -26,10 +49,11 @@ var Index = React.createClass({
 var routes = (
   <Route handler={Index}>
     <Route name="login" handler={LoginPage} />
+    <Route name="parentinfo" handler={ParentInfoPage} />
   </Route>
 );
 
 // Run our routes
-Router.run(routes, Router.HashLocation, function(Root) {
+ReactRouter.run(routes, ReactRouter.HashLocation, function(Root) {
   React.render(<Root />, document.body);
 });
