@@ -1,7 +1,9 @@
 var React = require('react');
+var ReactRouter = require("react-router")
 var $ = require('jquery');
 var _ = require('lodash');
 var Cookies = require('js-cookie');
+var AjaxHelpers = require("../AjaxHelpers");
 
 var ParentInfoPage = React.createClass({
   render: function() {
@@ -11,7 +13,7 @@ var ParentInfoPage = React.createClass({
 
     return (
       <div>
-        <h1>Hello, please complete your user profile.</h1>
+        <h1>To proceed, please complete your user profile.</h1>
         <br />
         <ParentInfoForm parent={this.props.parentData} />
       </div>
@@ -20,6 +22,8 @@ var ParentInfoPage = React.createClass({
 });
 
 var ParentInfoForm = React.createClass({
+  mixins: [ReactRouter.Navigation],
+
   handleSubmit: function(e) {
     e.preventDefault();
 
@@ -31,31 +35,25 @@ var ParentInfoForm = React.createClass({
     var province = React.findDOMNode(this.refs.province).value;
     var postalCode = React.findDOMNode(this.refs.postalCode).value;
 
-    var putData = {
-      username: this.props.parent.username,
+    // We assume that all information is updated here.
+    var patchData = {
       first_name: firstName,
       last_name: lastName,
-      phone_number: phoneNumber,
-      address: address,
-      city: city,
-      province: province,
-      postal_code: postalCode
+      parentprofile: {
+        phone_number: phoneNumber,
+        address: address,
+        city: city,
+        province: province,
+        postal_code: postalCode
+      }
     };
 
-    $.ajax({
-      url:"/rest-auth/user",
-      type:"PUT",
-      data: putData,
-      beforeSend: function(request) {
-        request.setRequestHeader("X-CSRFTOKEN", Cookies.get("csrftoken"))
-        request.setRequestHeader("Authorization", "Token " + window.localStorage.getItem("authtoken"));
-      }
-    }).done(function(data, status) {
-      console.log("success put");
-      console.log(data)
-    }).fail(function(jqXHR, status, errorThrown) {
-      console.log("fail");
-      console.log(jqXHR);
+    var self = this;
+    AjaxHelpers.updateParentInfo(patchData).done(function(data, status) {
+      self.transitionTo("/children");
+    }).fail(function(jqXHR) {
+      // TODO: Handle error
+      alert(jqXHR.responseText);
     });
   },
 

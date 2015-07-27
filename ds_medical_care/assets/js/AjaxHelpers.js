@@ -102,6 +102,64 @@ var AjaxHelpers = {
         setCsrfRequestHeader(request);
       }
     });
+  },
+
+  // Accepts: a properly-formed patchData
+  updateParentInfo: function(patchData) {
+    return $.ajax({
+      url:"/rest-auth/user",
+      type:"PATCH",
+      data: patchData,
+      beforeSend: function(request) {
+        setCsrfRequestHeader(request);
+        setAuthRequestHeader(request);
+      }
+    }).done(function(data, status, jqXHR) {
+      ReactiveStore.setParent(data);
+
+      return jqXHR;
+    });
+  },
+
+  // We might want to accept a parent id here in the future
+  getChildren: function() {
+    return $.ajax({
+      url: "/api/children",
+      type: "GET",
+      beforeSend: function(request) {
+        setCsrfRequestHeader(request);
+        setAuthRequestHeader(request);
+      }
+    }).done(function(data, status, jqXHR) {
+      ReactiveStore.setChildren(data);
+
+      return jqXHR;
+    });
+  },
+
+  addChild: function(parentId, firstName, lastName, dob) {
+    var postData = {
+      parent: parentId,
+      first_name: firstName,
+      last_name: lastName,
+      date_of_birth: dob
+    };
+
+    var self = this;
+
+    return $.ajax({
+      url: "/api/children/",
+      type: "POST",
+      data: postData,
+      beforeSend: function(request) {
+        setCsrfRequestHeader(request);
+        setAuthRequestHeader(request);
+      }
+    }).done(function(data, status, jqXHR) {
+      self.getChildren();
+
+      return jqXHR;
+    });
   }
 };
 

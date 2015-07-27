@@ -1,4 +1,5 @@
 var parent;
+var children;
 
 var ReactiveStore = {
   getParent: function() {
@@ -7,6 +8,14 @@ var ReactiveStore = {
 
   setParent: function(parentToUpdate) {
     parent = parentToUpdate;
+  },
+
+  getChildren: function() {
+    return children;
+  },
+
+  setChildren: function(childrenToUpdate) {
+    children = childrenToUpdate;
   }
 };
 

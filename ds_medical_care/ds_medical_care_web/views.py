@@ -25,9 +25,11 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class ChildViewSet(viewsets.ModelViewSet):
     serializer_class = ChildSerializer
-    queryset = Child.objects.all()
     # TODO: Restrict it to child's parents only
     permission_classes = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        return Child.objects.filter(parent=self.request.user.parentprofile)
 
 class ImportRedCapRecordsView(APIView):
 

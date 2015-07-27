@@ -14,6 +14,7 @@ var ReactiveStore = require("./ReactiveStore");
 var BaseTemplate = require('./BaseTemplate');
 var LoginPage = require('./pages/LoginPage');
 var ParentInfoPage = require('./pages/ParentInfoPage');
+var ChildrenPage = require("./pages/ChildrenPage");
 
 // Define our top level RouteHandler
 var Index = React.createClass({
@@ -21,7 +22,7 @@ var Index = React.createClass({
     AjaxHelpers.getParent();
 
     var self = this;
-    window.setInterval(function() {
+    this.parentInterval = window.setInterval(function() {
       var newParent = ReactiveStore.getParent();
       if(_.isEqual(self.state.parent, newParent)) {
         return;
@@ -30,9 +31,13 @@ var Index = React.createClass({
       self.setState({
         parent: newParent
       });
-    }, 500);
+    }, 200);
 
     return {};
+  },
+
+  componentWillUnmount: function() {
+    window.clearInterval(this.parentInterval);
   },
 
   render: function() {
@@ -50,6 +55,7 @@ var routes = (
   <Route handler={Index}>
     <Route name="login" handler={LoginPage} />
     <Route name="parentinfo" handler={ParentInfoPage} />
+    <Route name="children" handler={ChildrenPage} />
   </Route>
 );
 

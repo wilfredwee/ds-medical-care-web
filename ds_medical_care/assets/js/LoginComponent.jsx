@@ -69,7 +69,12 @@ var LoginComponent = React.createClass({
 
     AjaxHelpers.register(email, password1, password2)
       .done(function(data, status) {
-        self.handleLogin(email, password1);
+        AjaxHelpers.login(email, password1).done(function(data, status) {
+          self.transitionTo("/parentInfo");
+        }).fail(function(jqXHR) {
+          // TODO: Handle error.
+          alert(jqXHR.responseText);
+        });
       })
       .fail(function(jqXHR) {
         var errorMessages = _.map(jqXHR.responseJSON, function(value) {
