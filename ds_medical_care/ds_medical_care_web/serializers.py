@@ -1,13 +1,19 @@
 from rest_framework import serializers
 from rest_auth.serializers import UserDetailsSerializer
 
-from ds_medical_care_web.models import Child, ParentProfile
+from ds_medical_care_web.models import Child, ParentProfile, SleepBehavior
+
+class SleepBehaviorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = SleepBehavior
 
 class ChildSerializer(serializers.ModelSerializer):
+    sleep_behavior = SleepBehaviorSerializer(many=False, required=False)
 
     class Meta:
         model = Child
-        fields = ('id', 'first_name', 'last_name', 'parent', 'date_of_birth')
+        fields = ('id', 'first_name', 'last_name', 'parent', 'date_of_birth', 'sleep_behavior')
 
 class ParentProfileSerializer(serializers.ModelSerializer):
     children = ChildSerializer(many=True, required=False)

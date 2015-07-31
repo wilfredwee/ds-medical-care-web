@@ -14,12 +14,29 @@ class Child(models.Model):
     # May be useful to have this declared explicitly later on in development
     id = models.AutoField(primary_key=True)
     parent = models.ForeignKey('ParentProfile', related_name='children')
-    first_name = models.CharField(max_length=200, blank=True)
-    last_name = models.CharField(max_length=200, blank=True)
-    date_of_birth = models.DateField(blank=True)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    date_of_birth = models.DateField()
+    gender = models.CharField(max_length=200, choices=(('male', 'male'), ('female', 'female')))
+    PHN = models.CharField(max_length=50, blank=True)
+    MRN = models.CharField(max_length=50, blank=True)
+    ENC = models.CharField(max_length=50, blank=True)
+
 
     def __unicode__(self):
         return self.first_name + " " + self.last_name
+
+
+class SleepBehavior(models.Model):
+    YesNoIdk = (
+        ('yes', 'Yes'),
+        ('no', 'No'),
+        ('idk', 'I don\'t know')
+    )
+
+    child = models.OneToOneField(Child, related_name='sleep_behavior')
+    average_sleep = models.IntegerField()
+    has_regular_bedtime = models.CharField(choices=YesNoIdk, max_length=3)
 
 class ParentProfile(models.Model):
     user = models.OneToOneField(User)

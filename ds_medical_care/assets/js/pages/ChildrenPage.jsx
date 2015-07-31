@@ -178,6 +178,32 @@ var AddChildModal = React.createClass({
                   />
                 </div>
                 <div className="form-group">
+                  <label className="control-label">Gender</label>
+                    <div class="controls">
+                      <label className="radio-inline">
+                        <input
+                          type="radio"
+                          ref="genderMale"
+                          name="genderRadio"
+                          id="genderMale"
+                          value="male"
+                          defaultChecked
+                        />
+                        Male
+                      </label>
+                      <label className="radio-inline">
+                        <input
+                          type="radio"
+                          ref="genderFemale"
+                          name="genderRadio"
+                          id="genderFemale"
+                          value="female"
+                        />
+                        Female
+                      </label>
+                    </div>
+                </div>
+                <div className="form-group">
                   <label htmlFor="dob">Date of Birth</label>
                   <input
                     type="date"
