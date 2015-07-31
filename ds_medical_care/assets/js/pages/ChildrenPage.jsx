@@ -1,3 +1,6 @@
+require("../../stylesheets/ChildrenPage.css")
+require("../../images/child-default-profile.jpg")
+
 var React = require('react');
 var $ = require('jquery');
 var _ = require('lodash');
@@ -35,12 +38,14 @@ var ChildrenPage = React.createClass({
     }
 
     return (
-      <div>
+      <div className="container">
         <h1>Hello, {this.props.parentData.first_name}</h1>
         <br />
-        {_.map(this.state.children, function(child, index) {
-          return <ChildComponent key={index} child={child} />
-        })}
+        <div className="container">
+          {_.map(this.state.children, function(child, index) {
+            return <ChildComponent key={index} child={child} />
+          })}
+        </div>
         <br />
         <AddChildComponent parentId={this.props.parentData.parentprofile.id} />
       </div>
@@ -50,7 +55,27 @@ var ChildrenPage = React.createClass({
 
 var ChildComponent = React.createClass({
   render: function() {
-    return <h1>{this.props.child.first_name}</h1>
+    return (
+      <div className="row">
+        <div className="child-profile-container">
+          <div className="container-fluid">
+            <div className="col-md-4">
+              <div className="child-profile-image">
+                <img className="img-responsive img-circle" src={require("../../images/child-default-profile.jpg")} />
+              </div>
+            </div>
+            <div className="col-md-8">
+              <div className="row">
+                <h1>{this.props.child.first_name + " " + this.props.child.last_name}</h1>
+              </div>
+              <div className="row">
+                <p>Date of Birth: {this.props.child.date_of_birth}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
 });

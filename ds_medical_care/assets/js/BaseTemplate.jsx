@@ -18,6 +18,7 @@ var BaseTemplate = React.createClass({
               <Link className="navbar-brand" to="/">DS Medical Care</Link>
             </div>
             <ul className="nav navbar-nav navbar-right">
+              <ChildrenLinkComponent parent={this.props.parent} />
               <LoginLogoutComponent parent={this.props.parent} />
             </ul>
           </div>
@@ -43,6 +44,17 @@ var LoginLogoutComponent = React.createClass({
       return <li><a href="#" onClick={this.handleLogout}>Logout</a></li>;
     }
     return <li><Link to="login">Login</Link></li>;
+  }
+});
+
+var ChildrenLinkComponent = React.createClass({
+  mixins: [ReactRouter.Navigation],
+
+  render: function() {
+    if(this.props.parent) {
+      return <li><Link to="children">Manage Children</Link></li>
+    }
+    return false;
   }
 });
 
