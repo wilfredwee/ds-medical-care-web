@@ -109,7 +109,9 @@ var AjaxHelpers = {
     return $.ajax({
       url:"/rest-auth/user",
       type:"PATCH",
-      data: patchData,
+      dataType: "json",
+      data: JSON.stringify(patchData),
+      contentType: "application/json",
       beforeSend: function(request) {
         setCsrfRequestHeader(request);
         setAuthRequestHeader(request);
