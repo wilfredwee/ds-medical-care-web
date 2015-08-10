@@ -139,7 +139,7 @@ var AjaxHelpers = {
     });
   },
 
-  addChild: function(parentId, firstName, lastName, dob, gender, avgSleep, hasRegularBedTime) {
+  addChild: function(parentId, firstName, lastName, dob, gender, avgSleep, hasRegularBedTime, pictureFile) {
     var postData = {
       parent: parentId,
       first_name: firstName,
@@ -152,14 +152,36 @@ var AjaxHelpers = {
       }
     };
 
+    if(pictureFile) {
+      postData.picture = pictureFile;
+    }
+
+    var formData = new window.FormData();
+
+    _.each(postData, function(value, key) {
+      if(key === "picture") {
+        formData.append(key, value, value.name);
+      }
+      else if(key === "sleep_behavior") {
+        _.each(value, function(sleepBehaviorValue, sleepBehaviorKey) {
+          var formDataKey = key + "." + sleepBehaviorKey;
+
+          formData.append(formDataKey, sleepBehaviorValue);
+        });
+      }
+      else {
+        formData.append(key, value);
+      }
+    });
+
     var self = this;
 
     return $.ajax({
       url: "/api/children/",
       type: "POST",
-      dataType: "json",
-      contentType: "application/json",
-      data: JSON.stringify(postData),
+      contentType: false,
+      processData: false,
+      data: formData,
       beforeSend: function(request) {
         setCsrfRequestHeader(request);
         setAuthRequestHeader(request);

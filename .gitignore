@@ -85,3 +85,6 @@ bundles/
 
 # Secrets
 secret_settings.py
+
+# User files
+userfiles/

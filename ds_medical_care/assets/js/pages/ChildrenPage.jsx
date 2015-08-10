@@ -1,5 +1,7 @@
-require("../../stylesheets/ChildrenPage.css")
-require("../../images/child-default-profile.jpg")
+var Dropzone = require("react-dropzone");
+
+require("../../stylesheets/ChildrenPage.css");
+require("../../images/child-default-profile.jpg");
 
 var React = require('react');
 var $ = require('jquery');
@@ -61,7 +63,8 @@ var ChildComponent = React.createClass({
           <div className="container-fluid">
             <div className="col-md-4">
               <div className="child-profile-image">
-                <img className="img-responsive img-circle" src={require("../../images/child-default-profile.jpg")} />
+                <img className="img-responsive img-circle" src={this.props.child.picture? this.props.child.picture :
+                  require("../../images/child-default-profile.jpg")} />
               </div>
             </div>
             <div className="col-md-8">
@@ -136,6 +139,13 @@ var AddChildModal = React.createClass({
     });
   },
 
+  onPictureDrop: function(files) {
+    this.setState({
+      pictureFileURL: URL.createObjectURL(files[0]),
+      pictureFile: files[0]
+    });
+  },
+
   addChild: function(e) {
     e.preventDefault();
 
@@ -149,7 +159,7 @@ var AddChildModal = React.createClass({
 
     var self = this;
 
-    AjaxHelpers.addChild(this.props.parentId, firstName, lastName, dob, gender, avgSleep, hasRegularBedtime)
+    AjaxHelpers.addChild(this.props.parentId, firstName, lastName, dob, gender, avgSleep, hasRegularBedtime, this.state.pictureFile)
       .done(function() {
         $(".modal.fade").modal("hide");
         // $('.modal-backdrop').remove();
@@ -175,6 +185,13 @@ var AddChildModal = React.createClass({
             </div>
             <div className="modal-body">
               <form>
+                <div className="form-group">
+                  <label htmlFor="picture">Child Profile Picture</label>
+                  <Dropzone onDrop={this.onPictureDrop} width={150} height={150} multiple={false}>
+                    {this.state.pictureFileURL? <img ref="pictureContainer" src={this.state.pictureFileURL} style={{height: 150, width: 150}}/>:
+                      <div>Click here or drag a photo to upload.</div>}
+                  </Dropzone>
+                </div>
                 <div className="form-group">
                   <label htmlFor="firstName">First Name</label>
                   <input

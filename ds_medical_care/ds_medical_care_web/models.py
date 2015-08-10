@@ -21,6 +21,7 @@ class Child(models.Model):
     PHN = models.CharField(max_length=50, blank=True)
     MRN = models.CharField(max_length=50, blank=True)
     ENC = models.CharField(max_length=50, blank=True)
+    picture = models.ImageField(upload_to='children', blank=True)
 
 
     def __unicode__(self):
