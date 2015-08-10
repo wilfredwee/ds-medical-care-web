@@ -7,13 +7,23 @@ class SleepBehaviorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SleepBehavior
+        fields = ('average_sleep', 'has_regular_bedtime')
 
 class ChildSerializer(serializers.ModelSerializer):
     sleep_behavior = SleepBehaviorSerializer(many=False, required=False)
 
     class Meta:
         model = Child
-        fields = ('id', 'first_name', 'last_name', 'parent', 'date_of_birth', 'sleep_behavior')
+        fields = ('id', 'first_name', 'last_name', 'parent', 'date_of_birth', 'gender', 'sleep_behavior')
+
+    def create(self, validated_data):
+        sleep_behavior_data = validated_data.pop('sleep_behavior')
+        child = Child.objects.create(**validated_data)
+
+        if sleep_behavior_data:
+            SleepBehavior.objects.create(child=child, **sleep_behavior_data)
+
+        return child
 
 class ParentProfileSerializer(serializers.ModelSerializer):
     children = ChildSerializer(many=True, required=False)

@@ -43,7 +43,7 @@ var ChildrenPage = React.createClass({
         <br />
         <div className="container">
           {_.map(this.state.children, function(child, index) {
-            return <ChildComponent key={index} child={child} />
+            return <div><ChildComponent key={index} child={child} /><br /></div>
           })}
         </div>
         <br />
@@ -105,7 +105,9 @@ var AddChildComponent = React.createClass({
 var AddChildModal = React.createClass({
   getInitialState: function() {
     return {
-      errorMessages: []
+      errorMessages: [],
+      gender: "male",
+      hasRegularBedtime: "yes"
     };
   },
 
@@ -122,16 +124,32 @@ var AddChildModal = React.createClass({
     modal.modal("show");
   },
 
+  changeGender: function(e) {
+    this.setState({
+      gender: e.target.value
+    });
+  },
+
+  changeHasRegularBedtime: function(e) {
+    this.setState({
+      hasRegularBedtime: e.target.value
+    });
+  },
+
   addChild: function(e) {
     e.preventDefault();
 
     var firstName = React.findDOMNode(this.refs.firstName).value;
     var lastName = React.findDOMNode(this.refs.lastName).value;
     var dob = React.findDOMNode(this.refs.dob).value;
+    var gender = this.state.gender;
+
+    var avgSleep = React.findDOMNode(this.refs.avgSleep).value;
+    var hasRegularBedtime = this.state.hasRegularBedtime;
 
     var self = this;
 
-    AjaxHelpers.addChild(this.props.parentId, firstName, lastName, dob)
+    AjaxHelpers.addChild(this.props.parentId, firstName, lastName, dob, gender, avgSleep, hasRegularBedtime)
       .done(function() {
         $(".modal.fade").modal("hide");
         // $('.modal-backdrop').remove();
@@ -179,7 +197,7 @@ var AddChildModal = React.createClass({
                 </div>
                 <div className="form-group">
                   <label className="control-label">Gender</label>
-                    <div class="controls">
+                    <div className="controls">
                       <label className="radio-inline">
                         <input
                           type="radio"
@@ -188,6 +206,7 @@ var AddChildModal = React.createClass({
                           id="genderMale"
                           value="male"
                           defaultChecked
+                          onChange={this.changeGender}
                         />
                         Male
                       </label>
@@ -198,6 +217,7 @@ var AddChildModal = React.createClass({
                           name="genderRadio"
                           id="genderFemale"
                           value="female"
+                          onChange={this.changeGender}
                         />
                         Female
                       </label>
@@ -211,6 +231,52 @@ var AddChildModal = React.createClass({
                     className="form-control"
                     id="dob"
                   />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="avgSleep">Average sleep of your child</label>
+                  <input
+                    type="number"
+                    ref="avgSleep"
+                    className="form-control"
+                    id="avgSleep"
+                    placeholder="In Hours"
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="control-label">Does your child have regular bedtimes?</label>
+                    <div className="controls">
+                      <label className="radio-inline">
+                        <input
+                          type="radio"
+                          ref="regularBedtimeYes"
+                          name="regularBedtimeRadio"
+                          id="regularBedtimeYes"
+                          value="yes"
+                          defaultChecked
+                        />
+                        Yes
+                      </label>
+                      <label className="radio-inline">
+                        <input
+                          type="radio"
+                          ref="regularBedtimeNo"
+                          name="regularBedtimeRadio"
+                          id="regularBedtimeNo"
+                          value="no"
+                        />
+                        No
+                      </label>
+                      <label className="radio-inline">
+                        <input
+                          type="radio"
+                          ref="regularBedtimeIdk"
+                          name="regularBedtimeRadio"
+                          id="regularBedtimeIdk"
+                          value="idk"
+                        />
+                        {"I don't know"}
+                      </label>
+                    </div>
                 </div>
                 <br />
                 {

@@ -139,12 +139,17 @@ var AjaxHelpers = {
     });
   },
 
-  addChild: function(parentId, firstName, lastName, dob) {
+  addChild: function(parentId, firstName, lastName, dob, gender, avgSleep, hasRegularBedTime) {
     var postData = {
       parent: parentId,
       first_name: firstName,
       last_name: lastName,
-      date_of_birth: dob
+      date_of_birth: dob,
+      gender: gender,
+      sleep_behavior: {
+        average_sleep: avgSleep,
+        has_regular_bedtime: hasRegularBedTime
+      }
     };
 
     var self = this;
@@ -152,7 +157,9 @@ var AjaxHelpers = {
     return $.ajax({
       url: "/api/children/",
       type: "POST",
-      data: postData,
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify(postData),
       beforeSend: function(request) {
         setCsrfRequestHeader(request);
         setAuthRequestHeader(request);
