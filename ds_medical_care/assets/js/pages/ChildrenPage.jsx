@@ -45,7 +45,7 @@ var ChildrenPage = React.createClass({
         <br />
         <div className="container">
           {_.map(this.state.children, function(child, index) {
-            return <div><ChildComponent key={index} child={child} /><br /></div>
+            return <div key={index}><ChildComponent child={child} /><br /></div>
           })}
         </div>
         <br />
@@ -73,6 +73,15 @@ var ChildComponent = React.createClass({
               </div>
               <div className="row">
                 <p>Date of Birth: {this.props.child.date_of_birth}</p>
+              </div>
+              <div className="row">
+                <p>Gender: {this.props.child.gender}</p>
+              </div>
+              <div className="row">
+                <p>Average Sleep in Hours: {this.props.child.sleep_behavior? this.props.child.sleep_behavior.average_sleep : "Not filled"}</p>
+              </div>
+              <div className="row">
+                <p>Has regular bedtimes?: {this.props.child.sleep_behavior? this.props.child.sleep_behavior.has_regular_bedtime : "Not filled"}</p>
               </div>
             </div>
           </div>
@@ -176,6 +185,31 @@ var AddChildModal = React.createClass({
   },
 
   render: function() {
+    var pictureStyle = {
+      borderStyle: "dashed",
+      margin: "auto",
+      borderRadius: "50%",
+      width: 170,
+      height: 170,
+      padding: 5
+    };
+
+    if(this.state.pictureFileURL) {
+      pictureStyle.backgroundImage = "url(" + this.state.pictureFileURL + ")";
+      pictureStyle.backgroundSize = "cover";
+      pictureStyle.backgroundRepeat = "no-repeat";
+      pictureStyle.backgroundPosition = "50% 50%";
+    }
+
+    var glyphiconStyle = {
+      fontSize: "100px",
+      margin: "auto",
+      verticalAlign: "middle",
+      display: "block",
+      width: "60%",
+      lineHeight: "inherit"
+    };
+
     return (
       <div className="modal fade" role="dialog">
         <div className="modal-dialog">
@@ -187,9 +221,8 @@ var AddChildModal = React.createClass({
               <form>
                 <div className="form-group">
                   <label htmlFor="picture">Child Profile Picture</label>
-                  <Dropzone onDrop={this.onPictureDrop} width={150} height={150} multiple={false}>
-                    {this.state.pictureFileURL? <img ref="pictureContainer" src={this.state.pictureFileURL} style={{height: 150, width: 150}}/>:
-                      <div>Click here or drag a photo to upload.</div>}
+                  <Dropzone onDrop={this.onPictureDrop} style={pictureStyle} multiple={false}>
+                    {this.state.pictureFileURL? null : <span className="glyphicon glyphicon-plus" style={glyphiconStyle}></span>}
                   </Dropzone>
                 </div>
                 <div className="form-group">

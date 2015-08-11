@@ -14,7 +14,7 @@ class ChildSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Child
-        fields = ('id', 'first_name', 'last_name', 'parent', 'date_of_birth', 'gender', 'sleep_behavior')
+        fields = ('id', 'first_name', 'last_name', 'parent', 'date_of_birth', 'gender', 'picture', 'sleep_behavior')
 
     def create(self, validated_data):
         sleep_behavior_data = validated_data.pop('sleep_behavior')
