@@ -22,7 +22,9 @@ var Index = React.createClass({
     AjaxHelpers.getParent();
 
     var self = this;
-    this.parentInterval = window.setInterval(function() {
+
+    // Get the updated parent from the local Reactive Store every 200ms.
+    this.parentReactiveStoreInterval = window.setInterval(function() {
       var newParent = ReactiveStore.getParent();
       if(_.isEqual(self.state.parent, newParent)) {
         return;
@@ -33,11 +35,17 @@ var Index = React.createClass({
       });
     }, 200);
 
+    // GET the parent from the server every 10s.
+    // Reactive Store is updated automatically.
+    this.parentGETInterval = window.setInterval(function() {
+      AjaxHelpers.getParent();
+    }, 10000)
+
     return {};
   },
 
   componentWillUnmount: function() {
-    window.clearInterval(this.parentInterval);
+    window.clearInterval(this.parentReactiveStoreInterval);
   },
 
   render: function() {
