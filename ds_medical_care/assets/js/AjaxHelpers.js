@@ -139,7 +139,11 @@ var AjaxHelpers = {
     });
   },
 
-  addChild: function(parentId, firstName, lastName, dob, gender, avgSleep, hasRegularBedTime, pictureFile) {
+  addOrPatchChild: function(childId, parentId, firstName, lastName, dob, gender, avgSleep, hasRegularBedTime, pictureFile) {
+    var baseURL = "/api/children/";
+    var url = childId? (baseURL + childId + "/") : baseURL;
+    var httpMethod = childId? "PATCH" : "POST";
+
     var postData = {
       parent: parentId,
       first_name: firstName,
@@ -177,8 +181,8 @@ var AjaxHelpers = {
     var self = this;
 
     return $.ajax({
-      url: "/api/children/",
-      type: "POST",
+      url: url,
+      type: httpMethod,
       contentType: false,
       processData: false,
       data: formData,

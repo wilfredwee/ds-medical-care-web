@@ -6,7 +6,12 @@
   box-shadow: 1px 1px 5px #888888;
 }
 
-.child-profile-image {
+.child-profile-image-container {
   max-height: 170px;
   max-width: 170px;
+}
+
+.child-profile-image {
+  height: 170px;
+  width: 170px;
 }

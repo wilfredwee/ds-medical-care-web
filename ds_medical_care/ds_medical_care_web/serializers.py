@@ -25,6 +25,20 @@ class ChildSerializer(serializers.ModelSerializer):
 
         return child
 
+    def update(self, instance, validated_data):
+        sleep_behavior_data = validated_data.pop('sleep_behavior', {})
+        instance = super(ChildSerializer, self).update(instance, validated_data)
+
+        if sleep_behavior_data:
+            sleep_behavior = instance.sleep_behavior
+
+            for key, value in sleep_behavior_data.iteritems():
+                setattr(sleep_behavior, key, value)
+
+            sleep_behavior.save()
+
+        return instance
+
 class ParentProfileSerializer(serializers.ModelSerializer):
     children = ChildSerializer(many=True, required=False)
 

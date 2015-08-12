@@ -39,31 +39,47 @@ var ChildrenPage = React.createClass({
       return <h1>Please login</h1>;
     }
 
+    var parentId = this.props.parentData.parentprofile.id;
+
     return (
       <div className="container">
         <h1>Hello, {this.props.parentData.first_name}</h1>
         <br />
         <div className="container">
           {_.map(this.state.children, function(child, index) {
-            return <div key={index}><ChildComponent child={child} /><br /></div>
+            return <div key={index}><ChildComponent parentId={parentId} child={child} /><br /></div>
           })}
         </div>
         <br />
-        <AddChildComponent parentId={this.props.parentData.parentprofile.id} />
+        <AddChildComponent parentId={parentId} />
       </div>
     );
   }
 });
 
 var ChildComponent = React.createClass({
+  editChildProfile: function(e) {
+    e.preventDefault();
+
+    var modalDOM = $("<div>").modal();
+
+    React.render(<ChildFormModal
+      parentId={this.props.parentId}
+      child={this.props.child}
+      modalDOM={modalDOM}/>,
+      modalDOM[0]
+    );
+
+  },
+
   render: function() {
     return (
       <div className="row">
         <div className="child-profile-container">
           <div className="container-fluid">
             <div className="col-md-4">
-              <div className="child-profile-image">
-                <img className="img-responsive img-circle" src={this.props.child.picture? this.props.child.picture :
+              <div className="child-profile-image-container">
+                <img className="child-profile-image img-circle" src={this.props.child.picture? this.props.child.picture :
                   require("../../images/child-default-profile.jpg")} />
               </div>
             </div>
@@ -83,6 +99,9 @@ var ChildComponent = React.createClass({
               <div className="row">
                 <p>Has regular bedtimes?: {this.props.child.sleep_behavior? this.props.child.sleep_behavior.has_regular_bedtime : "Not filled"}</p>
               </div>
+                <div className="row">
+                <p><a href="" onClick={this.editChildProfile}>Edit Profile</a></p>
+              </div>
             </div>
           </div>
         </div>
@@ -98,7 +117,7 @@ var AddChildComponent = React.createClass({
 
     var modalDOM = $("<div>").modal();
 
-    React.render(<AddChildModal
+    React.render(<ChildFormModal
       parentId={this.props.parentId}
       modalDOM={modalDOM}/>,
       modalDOM[0]
@@ -114,19 +133,22 @@ var AddChildComponent = React.createClass({
   }
 });
 
-var AddChildModal = React.createClass({
+var ChildFormModal = React.createClass({
   getInitialState: function() {
-    return {
+    var initialState = {
       errorMessages: [],
-      gender: "male",
-      hasRegularBedtime: "yes"
     };
+
+    initialState.gender = this.props.child? this.props.child.gender : "male";
+    initialState.hasRegularBedtime = this.props.child? this.props.child.sleep_behavior.has_regular_bedtime : "yes";
+
+    return initialState;
   },
 
   componentDidMount: function() {
     var self = this;
 
-    var modal = $(".modal.fade")
+    var modal = $(".modal.fade");
 
     modal.on("hidden.bs.modal", function() {
       React.unmountComponentAtNode(self.props.modalDOM[0]);
@@ -150,13 +172,14 @@ var AddChildModal = React.createClass({
 
   onPictureDrop: function(files) {
     this.setState({
-      pictureFileURL: URL.createObjectURL(files[0]),
       pictureFile: files[0]
     });
   },
 
-  addChild: function(e) {
+  handleSubmit: function(e) {
     e.preventDefault();
+
+    var childId = this.props.child? this.props.child.id : undefined;
 
     var firstName = React.findDOMNode(this.refs.firstName).value;
     var lastName = React.findDOMNode(this.refs.lastName).value;
@@ -165,10 +188,11 @@ var AddChildModal = React.createClass({
 
     var avgSleep = React.findDOMNode(this.refs.avgSleep).value;
     var hasRegularBedtime = this.state.hasRegularBedtime;
+    var pictureFile = this.state.pictureFile;
 
     var self = this;
 
-    AjaxHelpers.addChild(this.props.parentId, firstName, lastName, dob, gender, avgSleep, hasRegularBedtime, this.state.pictureFile)
+    AjaxHelpers.addOrPatchChild(childId, this.props.parentId, firstName, lastName, dob, gender, avgSleep, hasRegularBedtime, pictureFile)
       .done(function() {
         $(".modal.fade").modal("hide");
         // $('.modal-backdrop').remove();
@@ -185,6 +209,16 @@ var AddChildModal = React.createClass({
   },
 
   render: function() {
+    var pictureFileURL;
+    // If we're editing a child, the child already has a picture and the picture has not been updated,
+    // use the included picture url.
+    if(this.props.child && this.props.child.picture && !this.state.pictureFile) {
+      pictureFileURL = this.props.child.picture;
+    }
+    else {
+      pictureFileURL = URL.createObjectURL(this.state.pictureFile);
+    }
+
     var pictureStyle = {
       borderStyle: "dashed",
       margin: "auto",
@@ -194,8 +228,8 @@ var AddChildModal = React.createClass({
       padding: 5
     };
 
-    if(this.state.pictureFileURL) {
-      pictureStyle.backgroundImage = "url(" + this.state.pictureFileURL + ")";
+    if(pictureFileURL) {
+      pictureStyle.backgroundImage = "url(" + pictureFileURL + ")";
       pictureStyle.backgroundSize = "cover";
       pictureStyle.backgroundRepeat = "no-repeat";
       pictureStyle.backgroundPosition = "50% 50%";
@@ -215,14 +249,14 @@ var AddChildModal = React.createClass({
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">Add a Child</h4>
+              <h4 className="modal-title">Complete the form for your child.</h4>
             </div>
             <div className="modal-body">
               <form>
                 <div className="form-group">
                   <label htmlFor="picture">Child Profile Picture</label>
                   <Dropzone onDrop={this.onPictureDrop} style={pictureStyle} multiple={false}>
-                    {this.state.pictureFileURL? null : <span className="glyphicon glyphicon-plus" style={glyphiconStyle}></span>}
+                    {pictureFileURL? null : <span className="glyphicon glyphicon-plus" style={glyphiconStyle}></span>}
                   </Dropzone>
                 </div>
                 <div className="form-group">
@@ -233,6 +267,7 @@ var AddChildModal = React.createClass({
                     className="form-control"
                     id="firstName"
                     placeholder="Enter his/her First Name"
+                    defaultValue={this.props.child? this.props.child.first_name : undefined}
                   />
                 </div>
                 <div className="form-group">
@@ -243,6 +278,7 @@ var AddChildModal = React.createClass({
                     className="form-control"
                     id="lastName"
                     placeholder="Enter his/her Last Name"
+                    defaultValue={this.props.child? this.props.child.last_name : undefined}
                   />
                 </div>
                 <div className="form-group">
@@ -255,7 +291,7 @@ var AddChildModal = React.createClass({
                           name="genderRadio"
                           id="genderMale"
                           value="male"
-                          defaultChecked
+                          checked={this.state.gender === "male"}
                           onChange={this.changeGender}
                         />
                         Male
@@ -267,6 +303,7 @@ var AddChildModal = React.createClass({
                           name="genderRadio"
                           id="genderFemale"
                           value="female"
+                          checked={this.state.gender === "female"}
                           onChange={this.changeGender}
                         />
                         Female
@@ -280,6 +317,7 @@ var AddChildModal = React.createClass({
                     ref="dob"
                     className="form-control"
                     id="dob"
+                    defaultValue={this.props.child? this.props.child.date_of_birth : undefined}
                   />
                 </div>
                 <div className="form-group">
@@ -290,6 +328,7 @@ var AddChildModal = React.createClass({
                     className="form-control"
                     id="avgSleep"
                     placeholder="In Hours"
+                    defaultValue={this.props.child? this.props.child.sleep_behavior.average_sleep : undefined}
                   />
                 </div>
                 <div className="form-group">
@@ -302,7 +341,8 @@ var AddChildModal = React.createClass({
                           name="regularBedtimeRadio"
                           id="regularBedtimeYes"
                           value="yes"
-                          defaultChecked
+                          checked={this.state.hasRegularBedtime === "yes"}
+                          onChange={this.changeHasRegularBedtime}
                         />
                         Yes
                       </label>
@@ -313,6 +353,8 @@ var AddChildModal = React.createClass({
                           name="regularBedtimeRadio"
                           id="regularBedtimeNo"
                           value="no"
+                          checked={this.state.hasRegularBedtime === "no"}
+                          onChange={this.changeHasRegularBedtime}
                         />
                         No
                       </label>
@@ -323,6 +365,8 @@ var AddChildModal = React.createClass({
                           name="regularBedtimeRadio"
                           id="regularBedtimeIdk"
                           value="idk"
+                          checked={this.state.hasRegularBedtime === "idk"}
+                          onChange={this.changeHasRegularBedtime}
                         />
                         {"I don't know"}
                       </label>
@@ -344,7 +388,7 @@ var AddChildModal = React.createClass({
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-              <button type="button" className="btn btn-primary" onClick={this.addChild}>Submit</button>
+              <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
             </div>
           </div>
         </div>
