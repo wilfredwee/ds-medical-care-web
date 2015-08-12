@@ -43,15 +43,17 @@ var ChildrenPage = React.createClass({
 
     return (
       <div className="container">
-        <h1>Hello, {this.props.parentData.first_name}</h1>
-        <br />
-        <div className="container">
-          {_.map(this.state.children, function(child, index) {
-            return <div key={index}><ChildComponent parentId={parentId} child={child} /><br /></div>
-          })}
+        <div className="row">
+          <div className="col-md-1"></div>
+          <div className="col-md-10">
+            {_.map(this.state.children, function(child, index) {
+              return <div key={index}><ChildComponent parentId={parentId} child={child} /><br /></div>
+            })}
+          <br />
+          <AddChildComponent parentId={parentId} />
+          </div>
+          <div className="col-md-1"></div>
         </div>
-        <br />
-        <AddChildComponent parentId={parentId} />
       </div>
     );
   }
@@ -127,7 +129,7 @@ var AddChildComponent = React.createClass({
   render: function() {
     return (
       <div>
-        <button className="btn btn-primary" onClick={this.handleAddChild}>Add a Child</button>
+        <button style={{float: "right"}} className="btn btn-primary btn-lg" onClick={this.handleAddChild}>Add New Profile</button>
       </div>
     );
   }

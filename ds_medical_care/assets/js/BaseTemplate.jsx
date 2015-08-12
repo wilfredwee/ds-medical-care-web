@@ -1,3 +1,6 @@
+require("../stylesheets/BaseTemplate.css");
+require("../images/brand-logo.png");
+
 var React = require('react');
 var $ = require('jquery');
 var Cookies = require('js-cookie');
@@ -12,9 +15,10 @@ var LoginComponent = require('./LoginComponent');
 var BaseTemplate = React.createClass({
    render: function() {
        return (
-        <nav className="navbar navbar-default">
+        <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
             <div className="navbar-header">
+              <Link className="navbar-brand navbar-brand-logo" to="/"><img src={require("../images/brand-logo.png")} /></Link>
               <Link className="navbar-brand" to="/">DS Medical Care</Link>
             </div>
             <ul className="nav navbar-nav navbar-right">

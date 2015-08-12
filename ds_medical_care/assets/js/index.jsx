@@ -1,19 +1,23 @@
-require('expose?$!expose?jQuery!jquery');
+require("expose?$!expose?jQuery!jquery");
 require("bootstrap-webpack");
 
-var React = require('react');
-var _ = require('lodash');
+require("../stylesheets/general.css")
 
-var ReactRouter = require('react-router');
+var React = require("react");
+var _ = require("lodash");
+
+var ReactRouter = require("react-router");
 var Route = ReactRouter.Route;
 var RouteHandler = ReactRouter.RouteHandler;
+var DefaultRoute = ReactRouter.DefaultRoute;
 
 var AjaxHelpers = require("./AjaxHelpers");
 var ReactiveStore = require("./ReactiveStore");
 
-var BaseTemplate = require('./BaseTemplate');
-var LoginPage = require('./pages/LoginPage');
-var ParentInfoPage = require('./pages/ParentInfoPage');
+var BaseTemplate = require("./BaseTemplate");
+var HomePage = require("./pages/HomePage");
+var LoginPage = require("./pages/LoginPage");
+var ParentInfoPage = require("./pages/ParentInfoPage");
 var ChildrenPage = require("./pages/ChildrenPage");
 
 // Define our top level RouteHandler
@@ -61,6 +65,7 @@ var Index = React.createClass({
 // Define our Routes
 var routes = (
   <Route handler={Index}>
+    <DefaultRoute handler={HomePage} />
     <Route name="login" handler={LoginPage} />
     <Route name="parentinfo" handler={ParentInfoPage} />
     <Route name="children" handler={ChildrenPage} />

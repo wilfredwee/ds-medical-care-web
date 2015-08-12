@@ -1,0 +1,16 @@
+.navbar {
+  background-color: #4A85A5;
+}
+
+.navbar .nav > li > a, .navbar-brand {
+  color: #FFFFFF !important;
+}
+
+.navbar-brand-logo {
+  padding: 5px;
+}
+
+.navbar-brand-logo > img {
+  height: 100%;
+  width: auto;
+}
