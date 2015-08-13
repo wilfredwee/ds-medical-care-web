@@ -1,14 +1,14 @@
-var Dropzone = require("react-dropzone");
-
 require("../../stylesheets/ChildrenPage.css");
 require("../../images/child-default-profile.jpg");
 
+var Dropzone = require("react-dropzone");
 var React = require('react');
 var $ = require('jquery');
 var _ = require('lodash');
 
 var AjaxHelpers = require("../AjaxHelpers");
 var ReactiveStore = require("../ReactiveStore");
+var ModelDisplayConverter = require("../ModelDisplayConverter");
 
 var ChildrenPage = React.createClass({
   getInitialState: function() {
@@ -25,9 +25,7 @@ var ChildrenPage = React.createClass({
       }
     }, 200);
 
-    return {
-      children: children
-    };
+    return {};
   },
 
   componentWillUmount: function() {
@@ -75,31 +73,33 @@ var ChildComponent = React.createClass({
   },
 
   render: function() {
+    var displayChild = ModelDisplayConverter.getDisplayChild(this.props.child);
+
     return (
       <div className="row">
         <div className="child-profile-container">
           <div className="container-fluid">
             <div className="col-md-4">
               <div className="child-profile-image-container">
-                <img className="child-profile-image img-circle" src={this.props.child.picture? this.props.child.picture :
+                <img className="child-profile-image img-circle" src={this.props.child.picture? displayChild.picture :
                   require("../../images/child-default-profile.jpg")} />
               </div>
             </div>
             <div className="col-md-8">
               <div className="row">
-                <h1>{this.props.child.first_name + " " + this.props.child.last_name}</h1>
+                <h1>{displayChild.first_name + " " + displayChild.last_name}</h1>
               </div>
               <div className="row">
-                <p>Date of Birth: {this.props.child.date_of_birth}</p>
+                <p>Date of Birth: {displayChild.date_of_birth}</p>
               </div>
               <div className="row">
-                <p>Gender: {this.props.child.gender}</p>
+                <p>Gender: {displayChild.gender}</p>
               </div>
               <div className="row">
-                <p>Average Sleep in Hours: {this.props.child.sleep_behavior? this.props.child.sleep_behavior.average_sleep : "Not filled"}</p>
+                <p>Average Sleep in Hours: {this.props.child.sleep_behavior? displayChild.sleep_behavior.average_sleep : "Not filled"}</p>
               </div>
               <div className="row">
-                <p>Has regular bedtimes?: {this.props.child.sleep_behavior? this.props.child.sleep_behavior.has_regular_bedtime : "Not filled"}</p>
+                <p>Has regular bedtimes?: {this.props.child.sleep_behavior? displayChild.sleep_behavior.has_regular_bedtime : "Not filled"}</p>
               </div>
                 <div className="row">
                 <p><a href="" onClick={this.editChildProfile}>Edit Profile</a></p>
