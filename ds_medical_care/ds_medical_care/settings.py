@@ -146,3 +146,9 @@ from secret_settings import *
 
 if production_settings:
     from production_settings import *
+
+if not DEBUG:
+    WEBPACK_LOADER.update({
+        'BUNDLE_DIR_NAME': 'dist/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json'
+    })
