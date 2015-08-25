@@ -143,3 +143,6 @@ DATABASES = {
 }
 
 from secret_settings import *
+
+if production_settings:
+    from production_settings import *
