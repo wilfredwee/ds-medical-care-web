@@ -71,7 +71,7 @@ target/
 
 # Webpack stuff
 *.orig
-ds_medical_care/webpack-stats.json
+webpack-stats.json
 node_modules/
 dist/
 bower_components/
@@ -91,3 +91,6 @@ production_settings.py
 
 # User files
 userfiles/
+
+# We want to track static files collected by collectstatic
+!static/dist/

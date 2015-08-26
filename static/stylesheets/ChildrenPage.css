@@ -1,0 +1,17 @@
+.child-profile-container {
+  padding: 20px;
+  border: 1px solid #E6E6E6;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  box-shadow: 1px 1px 5px #888888;
+}
+
+.child-profile-image-container {
+  max-height: 170px;
+  max-width: 170px;
+}
+
+.child-profile-image {
+  height: 170px;
+  width: 170px;
+}
