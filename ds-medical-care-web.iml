@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="django" name="Django">
+      <configuration>
+        <option name="rootFolder" value="$MODULE_DIR$" />
+        <option name="settingsModule" value="settings.py" />
+        <option name="manageScript" value="manage.py" />
+        <option name="environment" value="&lt;map/&gt;" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_CONFIGURATION" value="Django" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/../test/.idea" />
+        <option value="$MODULE_DIR$/../prometheus" />
+        <option value="$MODULE_DIR$/../prometheus/Godeps/_workspace/src/github.com/drone/go.stripe/examples" />
+        <option value="$MODULE_DIR$/../prometheus/Godeps/_workspace/src/github.com/stretchr/objx/codegen" />
+        <option value="$MODULE_DIR$/../prometheus/orders/email" />
+        <option value="$MODULE_DIR$/../470-tech-demo/tech-demo/webroot" />
+        <option value="$MODULE_DIR$/../FullStackCamp/node_modules/jade/node_modules/with/node_modules/uglify-js/tools" />
+        <option value="$MODULE_DIR$/../FullStackCamp/node_modules/jade/node_modules/constantinople/node_modules/uglify-js/tools" />
+        <option value="$MODULE_DIR$/../FullStackCamp/node_modules/express/node_modules/connect/lib/public" />
+        <option value="$MODULE_DIR$/../HP_Print_Code" />
+        <option value="$MODULE_DIR$/../HP_Web_Crawler/data" />
+        <option value="$MODULE_DIR$/../Group16-Project/FrontEnd" />
+        <option value="$MODULE_DIR$/../PersonalWebsite/mdl/html" />
+        <option value="$MODULE_DIR$/../PersonalWebsite/old/html" />
+        <option value="$MODULE_DIR$/../CMPT470Exercises/Exercise1" />
+        <option value="$MODULE_DIR$/../CMPT470Exercises/Exercise2" />
+        <option value="$MODULE_DIR$/../CMPT470Exercises/Exercise2/otherTechnique" />
+        <option value="$MODULE_DIR$/../CMPT470Exercises/Exercise4/exercise-4/webroot" />
+        <option value="$MODULE_DIR$/../WhiteboardServer/node_modules/hbs/examples/partial/views/partials" />
+        <option value="$MODULE_DIR$/../WhiteboardServer/node_modules/hbs/node_modules/handlebars/coverage/lcov-report" />
+        <option value="$MODULE_DIR$/../WhiteboardServer/node_modules/hbs/node_modules/handlebars/coverage/lcov-report/lib" />
+        <option value="$MODULE_DIR$/../WhiteboardServer/node_modules/hbs/node_modules/handlebars/coverage/lcov-report/dist/cjs" />
+        <option value="$MODULE_DIR$/../WhiteboardServer/node_modules/hbs/node_modules/handlebars/coverage/lcov-report/dist/cjs/handlebars" />
+        <option value="$MODULE_DIR$/../WhiteboardServer/node_modules/hbs/node_modules/handlebars/coverage/lcov-report/dist/cjs/handlebars/compiler" />
+        <option value="$MODULE_DIR$/../WhiteboardServer/node_modules/hbs/node_modules/handlebars/coverage/lcov-report/spec" />
+        <option value="$MODULE_DIR$/../WhiteboardServer/node_modules/hbs/node_modules/handlebars/coverage/lcov-report/spec/env" />
+        <option value="$MODULE_DIR$/../CMPT470Exercise10/webroot" />
+        <option value="$MODULE_DIR$/../framework-tutorial/chef/cookbooks/baseconfig/files/default" />
+        <option value="$MODULE_DIR$/../framework-tutorial/cmpt470exercise/templates/admin" />
+        <option value="$MODULE_DIR$/../framework-tutorial/cmpt470exercise/templates/polls" />
+        <option value="$MODULE_DIR$/../HP_Data_Extraction/data" />
+        <option value="$MODULE_DIR$/../PresentationServer" />
+        <option value="$MODULE_DIR$/templates/ds_medical_care_web" />
+        <option value="$MODULE_DIR$/../ResumeBuilderWebApp/web/html" />
+        <option value="$MODULE_DIR$/../HomeAutomationSystem/website/html" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/app" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/app/views" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/bower/node_modules/request/node_modules/node-uuid/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/bower/node_modules/cardinal/node_modules/redeyed/examples/browser" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/bower/node_modules/handlebars/coverage/lcov-report" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/bower/node_modules/handlebars/coverage/lcov-report/lib" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/bower/node_modules/handlebars/coverage/lcov-report/dist/cjs" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/bower/node_modules/handlebars/coverage/lcov-report/dist/cjs/handlebars" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/bower/node_modules/handlebars/coverage/lcov-report/dist/cjs/handlebars/compiler" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/bower/node_modules/handlebars/coverage/lcov-report/spec" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/bower/node_modules/handlebars/coverage/lcov-report/spec/env" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/bower/node_modules/configstore/node_modules/js-yaml/node_modules/argparse/node_modules/sprintf-js/demo" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt/node_modules/colors" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt/node_modules/grunt-legacy-log/node_modules/underscore.string/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt/node_modules/grunt-legacy-log/node_modules/underscore.string/test/test_underscore" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt/node_modules/underscore.string/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt/node_modules/underscore.string/test/test_underscore" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/karma/static" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/karma/node_modules/chokidar/node_modules/fsevents/node_modules/node-pre-gyp/lib/util/nw-pre-gyp" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/karma/node_modules/chokidar/node_modules/fsevents/node_modules/node-pre-gyp/node_modules/request/node_modules/node-uuid/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/karma/node_modules/socket.io/node_modules/engine.io/node_modules/engine.io-parser/node_modules/utf8/tests" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/karma/node_modules/socket.io/node_modules/socket.io-client/node_modules/engine.io-client/node_modules/has-cors/node_modules/global/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/karma/node_modules/socket.io/node_modules/socket.io-client/node_modules/engine.io-client/node_modules/engine.io-parser/node_modules/utf8/tests" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/karma/node_modules/socket.io/node_modules/socket.io-parser/node_modules/json3/coverage/lcov-report/lib" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/karma/node_modules/socket.io/node_modules/socket.io-adapter/node_modules/socket.io-parser/node_modules/json3/coverage/lcov-report/lib" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/phantomjs/node_modules/request/node_modules/node-uuid/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-svgmin/node_modules/svgo/node_modules/sax" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-svgmin/node_modules/svgo/node_modules/js-yaml/node_modules/argparse/node_modules/sprintf-js/demo" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/bower/node_modules/request/node_modules/node-uuid/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/bower/node_modules/cardinal/node_modules/redeyed/examples/browser" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/lib" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/dist/cjs" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/dist/cjs/handlebars" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/dist/cjs/handlebars/compiler" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/spec" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/spec/env" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/bower/node_modules/configstore/node_modules/js-yaml/node_modules/argparse/node_modules/sprintf-js/demo" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/insight/node_modules/configstore/node_modules/js-yaml/node_modules/argparse/node_modules/sprintf-js/demo" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/request/node_modules/node-uuid/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/cardinal/node_modules/redeyed/examples/browser" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/lib" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/dist/cjs" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/dist/cjs/handlebars" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/dist/cjs/handlebars/compiler" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/spec" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/handlebars/coverage/lcov-report/spec/env" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/update-notifier/node_modules/configstore/node_modules/js-yaml/node_modules/argparse/node_modules/sprintf-js/demo" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-google-cdn/node_modules/google-cdn/node_modules/bower/node_modules/bower-registry-client/node_modules/request/node_modules/node-uuid/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-ng-annotate/node_modules/ng-annotate/node_modules/acorn/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-autoprefixer/node_modules/autoprefixer-core/node_modules/postcss/node_modules/js-base64" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-autoprefixer/node_modules/autoprefixer-core/node_modules/postcss/node_modules/js-base64/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-autoprefixer/node_modules/autoprefixer-core/node_modules/postcss/node_modules/es6-promise/dist/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-watch/node_modules/tiny-lr-fork/node_modules/qs/test/browser" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-watch/node_modules/tiny-lr-fork/node_modules/faye-websocket/examples" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-cssmin/node_modules/maxmin/node_modules/gzip-size/node_modules/browserify-zlib/node_modules/pako/doc" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/htmlparser2/test/Documents" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/console-browserify/test/static" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/console-browserify/node_modules/date-now/test/static" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-uglify/node_modules/maxmin/node_modules/gzip-size/node_modules/browserify-zlib/node_modules/pako/doc" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-uglify/node_modules/uglify-js/tools" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/serve-index/public" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-connect/node_modules/connect/node_modules/errorhandler/public" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-connect/node_modules/portscanner/node_modules/async/test" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-htmlmin/node_modules/html-minifier/node_modules/uglify-js/tools" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-svgo/node_modules/svgo/node_modules/sax" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-svgo/node_modules/svgo/node_modules/js-yaml/node_modules/argparse/node_modules/sprintf-js/demo" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/buffer-to-vinyl/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-optipng/node_modules/optipng-bin/node_modules/bin-build/node_modules/download/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-optipng/node_modules/optipng-bin/node_modules/bin-build/node_modules/download/node_modules/gulp-decompress/node_modules/gulp-util/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-optipng/node_modules/optipng-bin/node_modules/bin-build/node_modules/decompress/node_modules/vinyl-fs/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-optipng/node_modules/optipng-bin/node_modules/bin-build/node_modules/decompress/node_modules/decompress-unzip/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-optipng/node_modules/optipng-bin/node_modules/bin-wrapper/node_modules/download/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-optipng/node_modules/optipng-bin/node_modules/bin-wrapper/node_modules/download/node_modules/gulp-decompress/node_modules/gulp-util/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-gifsicle/node_modules/gifsicle/node_modules/bin-build/node_modules/download/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-gifsicle/node_modules/gifsicle/node_modules/bin-build/node_modules/download/node_modules/gulp-decompress/node_modules/gulp-util/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-gifsicle/node_modules/gifsicle/node_modules/bin-build/node_modules/decompress/node_modules/vinyl-fs/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-gifsicle/node_modules/gifsicle/node_modules/bin-build/node_modules/decompress/node_modules/decompress-unzip/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-gifsicle/node_modules/gifsicle/node_modules/bin-wrapper/node_modules/download/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-gifsicle/node_modules/gifsicle/node_modules/bin-wrapper/node_modules/download/node_modules/gulp-decompress/node_modules/gulp-util/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-jpegtran/node_modules/jpegtran-bin/node_modules/bin-build/node_modules/download/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-jpegtran/node_modules/jpegtran-bin/node_modules/bin-build/node_modules/download/node_modules/gulp-decompress/node_modules/gulp-util/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-jpegtran/node_modules/jpegtran-bin/node_modules/bin-build/node_modules/decompress/node_modules/vinyl-fs/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-jpegtran/node_modules/jpegtran-bin/node_modules/bin-build/node_modules/decompress/node_modules/decompress-unzip/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-jpegtran/node_modules/jpegtran-bin/node_modules/bin-wrapper/node_modules/download/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../470-tech-presentation/node_modules/grunt-contrib-imagemin/node_modules/imagemin/node_modules/imagemin-jpegtran/node_modules/jpegtran-bin/node_modules/bin-wrapper/node_modules/download/node_modules/gulp-decompress/node_modules/gulp-util/node_modules/vinyl/node_modules/clone" />
+        <option value="$MODULE_DIR$/../meteor-ds-medical-care/client" />
+        <option value="$MODULE_DIR$/../meteor-ds-medical-care/client/templates" />
+      </list>
+    </option>
+  </component>
+</module>
